@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link "./linechart.css" rel="stylesheet" type="text/css" media="all">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+<body>
+    <script>
+        $(function () {
+            var lable = ['a', 'b', 'k', 'h', 'i', 'y', 'd', 'o', 'io', 'dt', 'sd'];
+            var sdata = [23, 54, 66, 7, 4, 3, 3, 4, 2, 8, 7];
+            var charData = [{
+                name: lable,
+                data: sdata
+            }];
+            console.info(lable);
+            $('#container').highcharts({
+                title: {
+                    text: 'Monthly Average Temperature',
+                    x: -20 //center
+                },
+                xAxis: {
+                    categories: charData[0].name
+                },
+                yAxis: {
+                    title: {
+                        text: 'Temperature (°C)'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                series: [{
+                    name: 'Tokyo',
+                    data: charData[0].data
+                }]
+            });
+        });
+    </script>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+</body>
+</html>
